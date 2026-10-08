@@ -1,7 +1,7 @@
 <template>
   <div v-if="!profile" class="flex flex-col items-center justify-center py-24">
     <Loader2 :size="36" class="text-indigo-600 animate-spin mb-2" />
-    <p class="text-sm font-medium text-slate-600">Memuat data profil...</p>
+    <p class="text-sm font-medium text-slate-700">Memuat data profil...</p>
   </div>
 
   <div v-else class="space-y-8 max-w-4xl mx-auto animate-in fade-in duration-300">
@@ -14,13 +14,14 @@
       </p>
     </div>
 
-    <!-- Profile Card Header -->
-    <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200/80 shadow-xs flex flex-col sm:flex-row items-center gap-6">
+    <div
+      class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200/80 shadow-xs flex flex-col sm:flex-row items-center gap-6"
+    >
       <div class="relative group">
         <img
           v-if="profile.photo"
           :src="profile.photo"
-          :alt="profile.name"
+          :alt="profile.name || 'Foto profil'"
           class="w-24 h-24 rounded-full object-cover border-4 border-white shadow-md ring-2 ring-indigo-100"
         />
         <div
@@ -41,8 +42,8 @@
             type="file"
             data-testid="profile-photo-file-input"
             accept="image/*"
-            @change="handlePhotoUpload"
             class="hidden"
+            @change="handlePhotoUpload"
           />
         </label>
       </div>
@@ -51,7 +52,9 @@
         <h2 class="text-xl font-bold text-slate-800">{{ profile.name }}</h2>
         <p class="text-sm text-slate-700">{{ profile.email }}</p>
         <div class="pt-2">
-          <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-indigo-50 text-indigo-700 border border-indigo-200/60">
+          <span
+            class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-indigo-50 text-indigo-700 border border-indigo-200/60"
+          >
             <Check :size="14" /> Terverifikasi
           </span>
         </div>
@@ -59,7 +62,6 @@
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-      <!-- Form Biodata -->
       <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200/80 shadow-xs space-y-5">
         <div class="flex items-center gap-2.5 pb-2 border-b border-slate-100">
           <div class="w-8 h-8 rounded-lg bg-indigo-50 text-indigo-600 flex items-center justify-center">
@@ -68,7 +70,7 @@
           <h3 class="font-bold text-slate-800">Ubah Biodata</h3>
         </div>
 
-                <form @submit.prevent="handleUpdateProfile" class="space-y-4">
+        <form class="space-y-4" @submit.prevent="handleUpdateProfile">
           <div>
             <label
               for="profile-name-input"
@@ -78,9 +80,9 @@
             </label>
             <input
               id="profile-name-input"
+              v-model="name"
               type="text"
               data-testid="profile-name-input"
-              v-model="name"
               class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-600 transition-all"
               required
             />
@@ -95,9 +97,9 @@
             </label>
             <input
               id="profile-email-input"
+              v-model="email"
               type="email"
               data-testid="profile-email-input"
-              v-model="email"
               class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-600 transition-all"
               required
             />
@@ -118,52 +120,66 @@
             </button>
           </div>
         </form>
+      </div>
 
-      <!-- Form Ganti Password -->
       <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200/80 shadow-xs space-y-5">
         <div class="flex items-center gap-2.5 pb-2 border-b border-slate-100">
-          <div class="w-8 h-8 rounded-lg bg-amber-50 text-amber-600 flex items-center justify-center">
+          <div class="w-8 h-8 rounded-lg bg-slate-100 text-slate-700 flex items-center justify-center">
             <ShieldCheck :size="18" />
           </div>
-          <h3 class="font-bold text-slate-800">Keamanan & Password</h3>
+          <h3 class="font-bold text-slate-800">Ubah Kata Sandi</h3>
         </div>
 
-        <form @submit.prevent="handleUpdatePassword" class="space-y-4">
+        <form class="space-y-4" @submit.prevent="handleUpdatePassword">
           <div>
-            <label for="pwd-6364" class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">Kata Sandi Saat Ini</label>
+            <label
+              for="old-password-input"
+              class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5"
+            >
+              Kata Sandi Saat Ini
+            </label>
             <input
-              id="pwd-6364"
-              type="password"
-              data-testid="current-password-input"
+              id="old-password-input"
               v-model="oldPassword"
-              placeholder="••••••"
-              class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-600 transition-all"
+              type="password"
+              data-testid="old-password-input"
+              class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-600 transition-all"
               required
             />
           </div>
 
           <div>
-            <label for="pwd-3405" class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">Kata Sandi Baru</label>
+            <label
+              for="new-password-input"
+              class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5"
+            >
+              Kata Sandi Baru
+            </label>
             <input
-              id="pwd-3405"
+              id="new-password-input"
+              v-model="newPassword"
               type="password"
               data-testid="new-password-input"
-              v-model="newPassword"
               placeholder="Minimal 6 karakter"
-              class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-600 transition-all"
+              class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-600 transition-all"
               required
             />
           </div>
 
           <div>
-            <label for="pwd-4814" class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">Ulangi Kata Sandi Baru</label>
+            <label
+              for="confirm-password-input"
+              class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5"
+            >
+              Ulangi Kata Sandi Baru
+            </label>
             <input
-              id="pwd-4814"
+              id="confirm-password-input"
+              v-model="newPasswordConfirmation"
               type="password"
               data-testid="confirm-password-input"
-              v-model="newPasswordConfirmation"
               placeholder="Konfirmasi kata sandi"
-              class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-600 transition-all"
+              class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-600 transition-all"
               required
             />
           </div>
@@ -197,7 +213,6 @@ import { User, Camera, Check, Loader2, ShieldCheck } from "lucide-vue-next";
 const usersStore = useUsersStore();
 const profile = computed(() => usersStore.profile);
 
-// Form states
 const name = ref("");
 const email = ref("");
 const oldPassword = ref("");
