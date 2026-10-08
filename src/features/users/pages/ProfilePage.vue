@@ -133,16 +133,16 @@
         <form class="space-y-4" @submit.prevent="handleUpdatePassword">
           <div>
             <label
-              for="old-password-input"
+              for="current-password-input"
               class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5"
             >
               Kata Sandi Saat Ini
             </label>
             <input
-              id="old-password-input"
+              id="current-password-input"
               v-model="oldPassword"
               type="password"
-              data-testid="old-password-input"
+              data-testid="current-password-input"
               class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-600 transition-all"
               required
             />

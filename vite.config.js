@@ -36,7 +36,21 @@ export default defineConfig(({ mode }) => {
       coverage: {
         provider: "v8",
         reporter: ["text", "json", "html", "lcov"],
-        exclude: ["node_modules/**", "src/main.js", "src/setupTests.js"],
+        include: ["src/**/*.{js,vue}"],
+        exclude: [
+          "node_modules/**",
+          "src/main.js",
+          "src/setupTests.js",
+          "src/**/*.test.js",
+          "vite.config.js",
+          "dist/**",
+        ],
+        thresholds: {
+          lines: 90,
+          functions: 90,
+          branches: 90,
+          statements: 90,
+        },
       },
     },
   };

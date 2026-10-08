@@ -56,7 +56,7 @@
       >
         <img
           :src="todo.cover"
-          :alt="todo.title || 'Cover lelang'"
+          :alt="todo.title || 'Cover'"
           class="w-full h-full object-cover"
         />
         <div
@@ -114,7 +114,7 @@
         >
           <MarkdownViewer v-if="todo.description" :content="todo.description" />
           <p v-else class="italic text-slate-600">
-            Tidak ada deskripsi rinci untuk lelang ini.
+            Tidak ada deskripsi rinci untuk todo ini.
           </p>
         </div>
       </div>
@@ -134,10 +134,11 @@
 </template>
 
 <script setup>
-import { ref, computed, watch, onMounted, defineAsyncComponent } from "vue";
+import { ref, computed, watch, onMounted } from "vue";
 import { useRoute, useRouter, RouterLink } from "vue-router";
 import ChangeCoverModal from "../modals/ChangeCoverModal.vue";
 import ChangeModal from "../modals/ChangeModal.vue";
+import MarkdownViewer from "../components/MarkdownViewer.vue";
 import { useAucationsStore } from "../states/aucationsStore";
 import { useUsersStore } from "../../users/states/usersStore";
 import { formatDate, showConfirmDialog } from "../../../helpers/toolsHelper";
@@ -151,18 +152,12 @@ import {
   Clock,
 } from "lucide-vue-next";
 
-const MarkdownViewer = defineAsyncComponent(() =>
-  import("../components/MarkdownViewer.vue")
-);
-
 const route = useRoute();
 const router = useRouter();
 const aucationsStore = useAucationsStore();
 const usersStore = useUsersStore();
 
-const todoId = computed(
-  () => route.params.aucationId || route.params.todoId
-);
+const todoId = computed(() => route.params.todoId || route.params.aucationId);
 const profile = computed(() => usersStore.profile);
 const todo = computed(() => aucationsStore.todo);
 const isTodo = computed(() => aucationsStore.isTodo);
@@ -200,7 +195,7 @@ watch(isTodoDeleted, (isDel) => {
 
 async function handleDelete() {
   const result = await showConfirmDialog(
-    "Apakah Anda yakin ingin menghapus lelang ini?"
+    "Apakah Anda yakin ingin menghapus todo ini?"
   );
   if (result.isConfirmed) {
     aucationsStore.asyncSetIsTodoDelete(todo.value.id);

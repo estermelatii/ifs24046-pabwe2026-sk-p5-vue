@@ -43,7 +43,7 @@
             <img
               v-if="previewUrl"
               :src="previewUrl"
-              alt="Preview cover"
+              alt="Preview"
               class="w-full h-full object-cover"
             />
             <div
