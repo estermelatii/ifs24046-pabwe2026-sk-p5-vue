@@ -1,13 +1,13 @@
 <template>
   <form @submit.prevent="onSubmitHandler" class="space-y-4">
     <div>
-      <label class="block text-xs font-bold text-slate-600 uppercase tracking-wider mb-1.5">
+      <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">
         Alamat Email
       </label>
       <div class="relative">
         <Mail
           :size="18"
-          class="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400"
+          class="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-600"
         />
         <input
           type="email"
@@ -22,13 +22,13 @@
     </div>
 
     <div>
-      <label class="block text-xs font-bold text-slate-600 uppercase tracking-wider mb-1.5">
+      <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">
         Kata Sandi
       </label>
       <div class="relative">
         <Lock
           :size="18"
-          class="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400"
+          class="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-600"
         />
         <input
           type="password"

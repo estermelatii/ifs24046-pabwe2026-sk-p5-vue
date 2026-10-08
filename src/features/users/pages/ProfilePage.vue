@@ -9,7 +9,7 @@
       <h1 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
         Profil Akun
       </h1>
-      <p class="text-sm text-slate-500 mt-1">
+      <p class="text-sm text-slate-700 mt-1">
         Kelola informasi identitas, foto profil, dan keamanan akun Anda.
       </p>
     </div>
@@ -49,7 +49,7 @@
 
       <div class="text-center sm:text-left space-y-1">
         <h2 class="text-xl font-bold text-slate-800">{{ profile.name }}</h2>
-        <p class="text-sm text-slate-500">{{ profile.email }}</p>
+        <p class="text-sm text-slate-700">{{ profile.email }}</p>
         <div class="pt-2">
           <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-indigo-50 text-indigo-700 border border-indigo-200/60">
             <Check :size="14" /> Terverifikasi
@@ -70,27 +70,29 @@
 
         <form @submit.prevent="handleUpdateProfile" class="space-y-4">
           <div>
-            <label class="block text-xs font-bold text-slate-600 uppercase tracking-wider mb-1.5">
+            <label for="profile-name-input" class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">
               Nama Lengkap
             </label>
             <input
+              id="profile-name-input"
               type="text"
               data-testid="profile-name-input"
               v-model="name"
-              class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-600 transition-all"
+              class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-600 transition-all"
               required
             />
           </div>
 
           <div>
-            <label class="block text-xs font-bold text-slate-600 uppercase tracking-wider mb-1.5">
+            <label for="profile-email-input" class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">
               Alamat Email
             </label>
             <input
+              id="profile-email-input"
               type="email"
               data-testid="profile-email-input"
               v-model="email"
-              class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-600 transition-all"
+              class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-600 transition-all"
               required
             />
           </div>
@@ -123,10 +125,9 @@
 
         <form @submit.prevent="handleUpdatePassword" class="space-y-4">
           <div>
-            <label class="block text-xs font-bold text-slate-600 uppercase tracking-wider mb-1.5">
-              Kata Sandi Saat Ini
-            </label>
+            <label for="pwd-6364" class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">Kata Sandi Saat Ini</label>
             <input
+              id="pwd-6364"
               type="password"
               data-testid="current-password-input"
               v-model="oldPassword"
@@ -137,10 +138,9 @@
           </div>
 
           <div>
-            <label class="block text-xs font-bold text-slate-600 uppercase tracking-wider mb-1.5">
-              Kata Sandi Baru
-            </label>
+            <label for="pwd-3405" class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">Kata Sandi Baru</label>
             <input
+              id="pwd-3405"
               type="password"
               data-testid="new-password-input"
               v-model="newPassword"
@@ -151,10 +151,9 @@
           </div>
 
           <div>
-            <label class="block text-xs font-bold text-slate-600 uppercase tracking-wider mb-1.5">
-              Ulangi Kata Sandi Baru
-            </label>
+            <label for="pwd-4814" class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">Ulangi Kata Sandi Baru</label>
             <input
+              id="pwd-4814"
               type="password"
               data-testid="confirm-password-input"
               v-model="newPasswordConfirmation"
