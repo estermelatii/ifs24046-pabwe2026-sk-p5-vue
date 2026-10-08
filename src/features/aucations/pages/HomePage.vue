@@ -28,7 +28,7 @@
           <p class="text-xs font-semibold uppercase tracking-wider text-slate-600">
             Total Todo
           </p>
-          <h3 class="text-3xl font-black text-slate-800 mt-1">{{ totalCount }}</h3>
+          <p class="text-3xl font-black text-slate-800 mt-1">{{ totalCount }}</p>
         </div>
         <div class="w-12 h-12 rounded-2xl bg-indigo-50 text-indigo-600 flex items-center justify-center">
           <CheckSquare :size="26" :stroke-width="2" />
@@ -40,9 +40,7 @@
           <p class="text-xs font-semibold uppercase tracking-wider text-slate-600">
             Todo Selesai
           </p>
-          <h3 class="text-3xl font-black text-emerald-600 mt-1">
-            {{ finishedCount }}
-          </h3>
+          <p class="text-3xl font-black text-emerald-600 mt-1">{{ finishedCount }}</p>
         </div>
         <div class="w-12 h-12 rounded-2xl bg-emerald-50 text-emerald-600 flex items-center justify-center">
           <CheckCircle2 :size="26" :stroke-width="2" />
@@ -54,7 +52,7 @@
           <p class="text-xs font-semibold uppercase tracking-wider text-slate-600">
             Sedang Proses
           </p>
-          <h3 class="text-3xl font-black text-amber-600 mt-1">{{ pendingCount }}</h3>
+          <p class="text-3xl font-black text-amber-600 mt-1">{{ pendingCount }}</p>
         </div>
         <div class="w-12 h-12 rounded-2xl bg-amber-50 text-amber-600 flex items-center justify-center">
           <Clock :size="26" :stroke-width="2" />
