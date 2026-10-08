@@ -8,13 +8,12 @@
         Delcom Auction
       </h1>
       <p class="mt-1 text-sm text-slate-700">
-        Aplikasi Pengelola Tugas & Autentikasi Modern
+        Aplikasi Lelang Online Delcom
       </p>
     </div>
 
     <div class="mt-8 sm:mx-auto sm:w-full sm:max-w-md px-4 sm:px-0">
       <div class="bg-white py-8 px-6 sm:px-10 shadow-xl shadow-slate-200/50 rounded-3xl border border-slate-100">
-        <!-- Tabs -->
         <nav aria-label="Autentikasi" class="flex rounded-2xl bg-slate-100 p-1 mb-6">
           <RouterLink
             to="/auth/login"

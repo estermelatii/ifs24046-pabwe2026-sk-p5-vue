@@ -15,3 +15,7 @@
     cursor: pointer;
   }
 }
+
+/* Axe contrast helpers */
+.text-slate-400 { color: #475569 !important; }
+.text-slate-500 { color: #334155 !important; }

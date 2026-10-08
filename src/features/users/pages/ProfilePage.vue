@@ -68,9 +68,12 @@
           <h3 class="font-bold text-slate-800">Ubah Biodata</h3>
         </div>
 
-        <form @submit.prevent="handleUpdateProfile" class="space-y-4">
+                <form @submit.prevent="handleUpdateProfile" class="space-y-4">
           <div>
-            <label for="profile-name-input" class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">
+            <label
+              for="profile-name-input"
+              class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5"
+            >
               Nama Lengkap
             </label>
             <input
@@ -84,7 +87,10 @@
           </div>
 
           <div>
-            <label for="profile-email-input" class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">
+            <label
+              for="profile-email-input"
+              class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5"
+            >
               Alamat Email
             </label>
             <input
@@ -112,7 +118,6 @@
             </button>
           </div>
         </form>
-      </div>
 
       <!-- Form Ganti Password -->
       <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200/80 shadow-xs space-y-5">
