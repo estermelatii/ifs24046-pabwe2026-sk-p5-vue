@@ -1,7 +1,7 @@
 <template>
   <form @submit.prevent="onSubmitHandler" class="space-y-4">
     <div>
-      <label class="block text-xs font-bold text-slate-600 uppercase tracking-wider mb-1.5">
+      <label for="register-name" class="block text-xs font-bold text-slate-600 uppercase tracking-wider mb-1.5">
         Nama Lengkap
       </label>
       <div class="relative">
@@ -9,7 +9,7 @@
           :size="18"
           class="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400"
         />
-        <input
+        <input id="register-name"
           type="text"
           data-testid="register-name-input"
           v-model="name"
@@ -21,7 +21,7 @@
     </div>
 
     <div>
-      <label class="block text-xs font-bold text-slate-600 uppercase tracking-wider mb-1.5">
+      <label for="register-email" class="block text-xs font-bold text-slate-600 uppercase tracking-wider mb-1.5">
         Alamat Email
       </label>
       <div class="relative">
@@ -29,7 +29,7 @@
           :size="18"
           class="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400"
         />
-        <input
+        <input id="register-email"
           type="email"
           data-testid="register-email-input"
           v-model="email"
@@ -41,7 +41,7 @@
     </div>
 
     <div>
-      <label class="block text-xs font-bold text-slate-600 uppercase tracking-wider mb-1.5">
+      <label for="register-password" class="block text-xs font-bold text-slate-600 uppercase tracking-wider mb-1.5">
         Kata Sandi
       </label>
       <div class="relative">
@@ -49,7 +49,7 @@
           :size="18"
           class="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400"
         />
-        <input
+        <input id="register-password"
           type="password"
           data-testid="register-password-input"
           v-model="password"
